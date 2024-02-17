@@ -12,7 +12,7 @@ const MapComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('/haryana.geojson');
+        const response = await fetch('/Haryana.geojson');
         const data = await response.json();
         setGeojsonData(data);
       } catch (error) {
