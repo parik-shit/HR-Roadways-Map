@@ -109,31 +109,31 @@ function TaskList() {
           </div>
         </div>
         {loading ? (
-          <SkeletonLoader />
-        ) : tasks.length === 0 ? (
-          <div>Error fetching</div>
-        ) : (
-          <ul>
-            {tasks.map((task) => (
-              <li
-                key={task.TaskId}
-                className={`rounded-md shadow-md p-4 mb-4 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"}`}
-              >
-                <div className="font-semibold mb-2">{task.title}</div>
-                <div className="text-gray-700 mb-2">{task.description}</div>
-                <div className="text-gray-500 mb-2">{task.dueDate}</div>
-                <div className="flex mt-4">
-                  <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 mr-2 rounded" onClick={() => openUpdateModal(task.TaskId)}>
-                    Update
-                  </button>
-                  <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded" onClick={() => handleDeleteTask(task.TaskId)}>
-                    Delete
-                  </button>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+  <SkeletonLoader />
+) : tasks.length === 0 ? (
+  <div>Error fetching</div>
+) : (
+  <ul>
+    {tasks.map((task) => (
+      <li
+        key={task.TaskId}
+        className={`rounded-md shadow-md p-4 mb-4 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"}`}
+      >
+        <div className="font-semibold mb-2">{task.title}</div>
+        <div className="text-gray-700 mb-2">{task.description}</div>
+        <div className="text-gray-500 mb-2">{task.dueDate}</div>
+        <div className="flex mt-4">
+          <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 mr-2 rounded" onClick={() => openUpdateModal(task.TaskId)}>
+            Update
+          </button>
+          <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded" onClick={() => handleDeleteTask(task.TaskId)}>
+            Delete
+          </button>
+        </div>
+      </li>
+    ))}
+  </ul>
+)}
         {isUpdateModalOpen && (
           <UpdateTaskModal
             updateTaskData={updateTaskData}
