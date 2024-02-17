@@ -115,7 +115,7 @@ function TaskList() {
   <div>Error fetching</div>
 ) : (
   <ul>
-    {tasks.map((task) => (
+    {/* {tasks.map((task) => (
       <li
         key={task.TaskId}
         className={`rounded-md shadow-md p-4 mb-4 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"}`}
@@ -132,7 +132,7 @@ function TaskList() {
           </button>
         </div>
       </li>
-    ))}
+    ))} */}
   </ul>
 )}
         {isUpdateModalOpen && (
