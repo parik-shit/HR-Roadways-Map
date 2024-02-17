@@ -32,7 +32,8 @@ function TaskList() {
         setTasks(response.data);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching tasks:", error);
+        console.error("Error fetching tasks:", error); // Log the error here
+        setLoading(false); // Ensure loading state is set to false even if there's an error
       }
     };
     fetchTasks();
