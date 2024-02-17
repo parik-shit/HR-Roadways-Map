@@ -96,52 +96,56 @@ function TaskList() {
     }
   };
 
-  return (
-    <div className={`container mx-auto px-4 py-8 `} style={{ maxWidth: "800px" }}>
-      <ToastContainer />
-      <div className="flex items-center justify-between mb-4">
-        <h1 className="text-3xl font-semibold">Tasks</h1>
-        <div>
-          <button className="bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2" onClick={onAdd}>
-            Add Task
-          </button>
+  
+    return (
+      <div className={`container mx-auto px-4 py-8 `} style={{ maxWidth: "800px" }}>
+        <ToastContainer />
+        <div className="flex items-center justify-between mb-4">
+          <h1 className="text-3xl font-semibold">Tasks</h1>
+          <div>
+            <button className="bg-gray-400 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded mr-2" onClick={onAdd}>
+              Add Task
+            </button>
+          </div>
         </div>
+        {loading ? (
+          <SkeletonLoader />
+        ) : tasks.length === 0 ? (
+          <div>Error fetching</div>
+        ) : (
+          <ul>
+            {tasks.map((task) => (
+              <li
+                key={task.TaskId}
+                className={`rounded-md shadow-md p-4 mb-4 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"}`}
+              >
+                <div className="font-semibold mb-2">{task.title}</div>
+                <div className="text-gray-700 mb-2">{task.description}</div>
+                <div className="text-gray-500 mb-2">{task.dueDate}</div>
+                <div className="flex mt-4">
+                  <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 mr-2 rounded" onClick={() => openUpdateModal(task.TaskId)}>
+                    Update
+                  </button>
+                  <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded" onClick={() => handleDeleteTask(task.TaskId)}>
+                    Delete
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
+        {isUpdateModalOpen && (
+          <UpdateTaskModal
+            updateTaskData={updateTaskData}
+            handleInputChange={handleInputChange}
+            handleUpdateTask={handleUpdateTask}
+            closeUpdateModal={closeUpdateModal}
+            darkMode={darkMode}
+          />
+        )}
       </div>
-      {loading ? (
-        <SkeletonLoader />
-      ) : (
-        <ul>
-          {tasks.map((task) => (
-            <li
-              key={task.TaskId}
-              className={`rounded-md shadow-md p-4 mb-4 ${darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"}`}
-            >
-              <div className="font-semibold mb-2">{task.title}</div>
-              <div className="text-gray-700 mb-2">{task.description}</div>
-              <div className="text-gray-500 mb-2">{task.dueDate}</div>
-              <div className="flex mt-4">
-                <button className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 mr-2 rounded" onClick={() => openUpdateModal(task.TaskId)}>
-                  Update
-                </button>
-                <button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2 px-4 rounded" onClick={() => handleDeleteTask(task.TaskId)}>
-                  Delete
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      )}
-      {isUpdateModalOpen && (
-        <UpdateTaskModal
-          updateTaskData={updateTaskData}
-          handleInputChange={handleInputChange}
-          handleUpdateTask={handleUpdateTask}
-          closeUpdateModal={closeUpdateModal}
-          darkMode={darkMode}
-        />
-      )}
-    </div>
-  );
+    );
+    
 }
 
 export default TaskList;
