@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import TaskList from './components/TaskList';
+// import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
 import { ThemeProvider, ThemeContext } from './ThemeContext'; // Import the ThemeProvider
 import ThemeToggle from './components/ThemeToggle';
@@ -39,7 +39,7 @@ function AppContent({ isSmallScreen }) {
           <ThemeToggle /> {/* Use the ThemeToggle component here */}
         </div>
         <Routes>
-          <Route path="/" element={<TaskList />} />
+          <Route path="/" element={<MapBox />} />
           <Route path="/add" element={<TaskForm />} />
           {/* Add more routes here if needed */}
           <Route path="/map" element={<MapBox />} />
