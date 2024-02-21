@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import TaskForm from './components/TaskForm';
 import { ThemeProvider, ThemeContext } from './ThemeContext';
-import ThemeToggle from './components/ThemeToggle';
+// import ThemeToggle from './components/ThemeToggle';
 import Sidebar from './components/sidebar/Sidebar';
 import BottomSidebar from './components/sidebar/BottomSidebar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'tailwindcss/tailwind.css';
-import MapBox from './components/Map/MapBox';
+// import MapBox from './components/Map/MapBox';
 import MapComponent from './components/Map/MapComponent';
 import MapPage from './components/Map/MapPage';
 import { SizeProvider, SizeContext } from './SizeProvider'; // Import SizeProvider and SizeContext
@@ -39,7 +39,7 @@ function AppContent() {
           {/* <ThemeToggle />  */}
         </div>
         <Routes>
-          <Route path="/" element={<MapBox />} />
+          <Route path="/" element={<MapPage />} />
           <Route path="/add" element={<TaskForm />} />
           {/* Add more routes here if needed */}
           <Route path="/map" element={<MapPage />} />

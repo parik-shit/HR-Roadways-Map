@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { ThemeContext } from '../../ThemeContext'; // Import the ThemeContext
 import { Chats,House,Plus } from "@phosphor-icons/react";
 import SidebarLink from './SidebarLink';
+import ThemeToggle from '../ThemeToggle'
 
 const BottomSidebar = () => {
   const { darkMode } = useContext(ThemeContext); // Access darkMode state from the context
@@ -18,8 +19,9 @@ const BottomSidebar = () => {
     >
       <div className="h-full flex justify-center items-center">
         <SidebarLink to="/" text="Home" icon={House} darkMode={darkMode} />
+        <ThemeToggle/>
         <SidebarLink to="/add" text="Add Task" icon={Plus} darkMode={darkMode} />
-        <SidebarLink to="/" text="Chat Room" icon={Chats} darkMode={darkMode} />
+        {/* <SidebarLink to="/" text="Chat Room" icon={Chats} darkMode={darkMode} /> */}
         {/* Add more links for additional tabs */}
       </div>
     </div>

@@ -19,7 +19,8 @@ const ThemeToggle = () => {
     <button
       className={`w-12 h-12 flex items-center justify-center rounded-md border border-gray-300 focus:outline-none ${
         darkMode ? 'hover:bg-gray-600' : 'hover:bg-gray-200'
-      } ${isSmallScreen ? 'fixed bottom-16 left-0 ml-4 mb-4' : ''}`} // Conditionally apply styles based on isSmallScreen
+      } ${isSmallScreen ? 'fixed' : ''}`} // Conditionally apply styles based on isSmallScreen
+      // } ${isSmallScreen ? 'fixed bottom-16 left-0 ml-4 mb-4' : ''}`} // Conditionally apply styles based on isSmallScreen
       onClick={toggleDarkMode}
     >
       {darkMode ? <MoonIcon /> : <SunIcon />}
