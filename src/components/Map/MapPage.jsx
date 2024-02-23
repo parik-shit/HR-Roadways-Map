@@ -54,7 +54,7 @@ const MapPage = () => {
         {/* Stats section */}
         <div className={` w-${isSmallScreen ? 'full' : '2/4'}`}>
           {/* Stats content */}
-          <div className="mt-44 mx-auto w-3/4 ">
+          <div className="mt-44 mx-auto w-2/4 ">
             {/* <MapStats /> */}
             <DistanceCalculator distance = {6}/>
             <Card selectedDistricts={selectedDistricts} />
