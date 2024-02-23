@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import TaskForm from './components/TaskForm';
 import { ThemeProvider, ThemeContext } from './ThemeContext';
-// import ThemeToggle from './components/ThemeToggle';
+import ThemeToggle from './components/ThemeToggle';
 import Sidebar from './components/sidebar/Sidebar';
 import BottomSidebar from './components/sidebar/BottomSidebar';
 import { ToastContainer } from 'react-toastify';
@@ -36,7 +36,7 @@ function AppContent() {
       <SidebarComponent />
       <div className={`flex-1 justify-center items-center min-h-screen  ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100'} ${isSmallScreen ? '' : `pl-${sidebarWidth}`}`}>
         <div className={`absolute top-0 right-0 m-4`}>
-          {/* <ThemeToggle />  */}
+          <ThemeToggle /> 
         </div>
         <Routes>
           <Route path="/" element={<MapPage />} />

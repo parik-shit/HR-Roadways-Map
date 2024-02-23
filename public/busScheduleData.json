@@ -1,0 +1,24 @@
+[
+    {
+      "sr": "1",
+      "no": "123",
+      "route": "A to B",
+      "via": "C, D",
+      "busType": "Express"
+    },
+    {
+      "sr": "2",
+      "no": "456",
+      "route": "X to Y",
+      "via": "E, F",
+      "busType": "Local"
+    },
+    {
+      "sr": "3",
+      "no": "789",
+      "route": "P to Q",
+      "via": "G, H",
+      "busType": "Express"
+    }
+  ]
+  

@@ -3,24 +3,28 @@ import { geoMercator, geoPath, geoInterpolate } from 'd3-geo';
 import { select } from 'd3-selection';
 import { ThemeContext } from '../../ThemeContext';
 import { SizeContext } from '../../SizeProvider';
+// import Card from './Card'
 
-const MapComponent = () => {
+const MapComponent = ({ passSelectedDistrictsToBox }) => {
   const svgRef = useRef();
   const { darkMode } = useContext(ThemeContext);
   const { isSmallScreen } = useContext(SizeContext);
   const [geojsonData, setGeojsonData] = useState(null);
   const [hoveredDistrict, setHoveredDistrict] = useState(null);
   const [selectedDistricts, setSelectedDistricts] = useState([]);
+  
 
   const [svgWidth, setSvgWidth] = useState(800);
   const [svgHeight, setSvgHeight] = useState(600);
 
+  
+
   useEffect(() => {
     if (isSmallScreen) {
-      setSvgWidth(400);
+      setSvgWidth(200);
       setSvgHeight(300);
     } else {
-      setSvgWidth(800);
+      setSvgWidth(600);
       setSvgHeight(600);
     }
   }, [isSmallScreen]);
@@ -52,7 +56,7 @@ const MapComponent = () => {
 
     const svg = select(svgRef.current);
     const projection = geoMercator().fitSize([svgWidth, svgHeight], geojsonData);
-    const pathGenerator = geoPath().projection(projection);
+    const pathGenerator = geoPath().projection(projection).pointRadius(8);
 
     svg.selectAll('path').remove();
 
@@ -62,7 +66,7 @@ const MapComponent = () => {
       .append('path')
       .attr('d', pathGenerator)
       .attr('fill', 'transparent')
-      .attr('stroke', darkMode ? 'white' : 'black')
+      .attr('stroke', darkMode ? 'steelblue' : 'black')
       .attr('stroke-width', 0.5)
       .on('mouseover', (event, d) => {
         setHoveredDistrict(d.properties.Dist_Name);
@@ -89,7 +93,9 @@ const MapComponent = () => {
         const feature = geojsonData.features.find(feature => feature.properties.Dist_Name === districtName);
         return projection(geoPath().centroid(feature)); // Using centroid for simplicity
       });
-  
+      // handleSelectedDistricts(selectedDistricts)
+      console.log(selectedDistricts)
+      passSelectedDistrictsToBox(selectedDistricts);
       // Calculate the midpoint
       const midPoint = geoInterpolate(district1, district2)(0.5); // Midpoint at 50% of the distance
   
@@ -120,16 +126,29 @@ const MapComponent = () => {
         .attr('stroke', 'orange')
         .attr('stroke-width', 2);
     }
-  }, [selectedDistricts, geojsonData, svgWidth, svgHeight]);
+  }, [selectedDistricts, geojsonData, svgWidth, svgHeight,passSelectedDistrictsToBox]);
+  // useEffect(() => {
+  //   if (selectedDistricts.length === 2) {
+  //     console.log(selectedDistricts);
+  //     // Pass selected districts as props to the Card component
+  //     handleSelectedDistricts(selectedDistricts);
+  //   }
+  // }, [selectedDistricts]);
+  
+  // const handleSelectedDistricts = (selectedDistricts) => {
+  //   // Perform any logic you need with the selected districts
+  //   // For example, you can pass them directly to the Card component
+  //   return <Card selectedDistricts={selectedDistricts} />;
+  // };
   
   return (
     <div>
       {hoveredDistrict && (
-        <div className='text-3xl text-orange-400 font-mono font-bold '>
+        <div className='text-3xl text-orange-400 font-mono  font-bold '>
           {hoveredDistrict}
         </div>
       )}
-      <svg ref={svgRef} width={svgWidth} height={svgHeight} className="w-full h-full ">
+      <svg ref={svgRef} width={svgWidth} height={svgHeight} className="border w-full  rounded-md  h-full ">
         {/* Adjust width and height as needed */}
       </svg>
     </div>

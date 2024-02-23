@@ -8,8 +8,8 @@ const MapStats = () => {
     };
 
     return (
-        <div className="flex justify-center items-center w-full h-full">
-            <div className="flex items-center mt-10">
+        <div className="flex   justify-center  items-center w-full h-full">
+            <div className="flex items-center ">
                 {/* Stat: Number of Bus */}
                 <div className={`group stat bg-transparent border border-transparent p-4 rounded-tl-lg rounded-bl-lg cursor-pointer transition-colors duration-300 ease-in-out hover:bg-blue-100 ${activeStat === 'bus' ? 'bg-blue-100 border-blue-400 transform transition-transform duration-300' : ''}`} onClick={() => handleStatClick('bus')}>
                     <span className="text-blue-800 font-semibold flex justify-center items-center h-full">
