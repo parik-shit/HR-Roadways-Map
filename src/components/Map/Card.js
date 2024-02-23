@@ -14,7 +14,7 @@ const Card = ({ selectedDistricts }) => {
                     <div className="flex items-center mx-2">
                         <ArrowRight />
                     </div>
-                    <div className="fade-in bg-gray-500 bg-opacity-30 rounded-md p-2 mx-2 flex-grow">
+                    <div className="fade-in bg-gray-500 bg-opacity-30 rounded-sm p-2 mx-2 flex-grow">
                         <p className="text-lg font-bold text-center text-orange-400">{district2}</p>
                     </div>
                 </div>

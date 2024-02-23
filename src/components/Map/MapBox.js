@@ -11,7 +11,7 @@ const MapBox = ({ updateSelectedDistricts }) => {
   const { darkMode } = useContext(ThemeContext);
 
   return (
-    <div className={` flex border ml-10  justify-center h-screen items-center w-3/4  ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}`}>
+    <div className={` flex ml-10  justify-center h-screen items-center w-3/4  ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'}`}>
       <MapComponent passSelectedDistrictsToBox={passSelectedDistrictsToBox} />
     </div>
   );

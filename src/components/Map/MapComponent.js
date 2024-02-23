@@ -148,7 +148,7 @@ const MapComponent = ({ passSelectedDistrictsToBox }) => {
           {hoveredDistrict}
         </div>
       )}
-      <svg ref={svgRef} width={svgWidth} height={svgHeight} className="border w-full  rounded-md  h-full ">
+      <svg ref={svgRef} width={svgWidth} height={svgHeight} className=" w-full  rounded-md  h-full ">
         {/* Adjust width and height as needed */}
       </svg>
     </div>

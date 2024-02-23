@@ -24,7 +24,7 @@ const BusScheduleCard = ({ columns }) => {
   });
 
   return (
-    <div className="rounded p-4 mb-4">
+    <div className="rounded ">
       <table {...getTableProps()} className="w-full  border-separate border-spacing-y-1  border-spacing-x-1">
         <thead>
           {headerGroups.map(headerGroup => (

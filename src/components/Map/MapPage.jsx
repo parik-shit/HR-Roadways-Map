@@ -56,14 +56,14 @@ const MapPage = () => {
           {/* Stats content */}
           <div className="mt-44 mx-auto w-2/3 ">
             {/* <MapStats /> */}
-            <DistanceCalculator selectedDistricts={selectedDistricts}/>
+            <DistanceCalculator distance = {6}/>
             <Card selectedDistricts={selectedDistricts} />
             <BusScheduleCard columns={columns} />
           </div>
         </div>
 
         {/* Map section */}
-        <div className={`border w-${isSmallScreen ? 'full' : '2/4'}`}>
+        <div className={` w-${isSmallScreen ? 'full' : '2/4'}`}>
           {/* Map content */}
           <MapBox updateSelectedDistricts={updateSelectedDistricts} />
         </div>
